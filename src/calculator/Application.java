@@ -10,8 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
 
-import static enums.Status.NUM1;
-
 public class Application implements ActionListener {
     static Application singleton;
 
@@ -33,7 +31,7 @@ public class Application implements ActionListener {
         this.num2 = new Stack();
         this.operations = new Stack();
         this.numBuffer = "";
-        this.status = NUM1;
+        this.status = Status.NUM1;
     }
 
     public static Application getInstance(){
@@ -56,7 +54,7 @@ public class Application implements ActionListener {
 
     public void handleAction(String action) {
         if (Utils.isDouble(action)) {
-            if (this.status == NUM1 || this.status == Status.NUM2) {
+            if (this.status == Status.NUM1 || this.status == Status.NUM2) {
                 this.numBuffer += String.valueOf(action);
                 this.ui.setDisplay(this.numBuffer);
             } else if (this.status == Status.OPERATION) {
